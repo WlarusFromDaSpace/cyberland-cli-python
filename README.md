@@ -5,7 +5,7 @@ A cli client for https://cyberland.club
 
 Python 3.x
 
-requirements
+requests
 
 simplejson
 
