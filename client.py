@@ -13,7 +13,12 @@ def filter(cnt):
 
 def filter_update():
     global filters
-    file = open('filters', 'r')
+    try:
+        file = open('filters', 'r')
+    except FileNotFoundError:
+        file = open('filters', 'a+')
+        file.close()
+        file = open('filters', 'r')
     filters = [line.rstrip() for line in file]
     file.close()
 
