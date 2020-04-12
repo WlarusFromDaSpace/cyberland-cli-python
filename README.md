@@ -1,5 +1,5 @@
 # cyberland-cli-python
-A cli client for https://cyberland.club
+A cli client for textboards based on this https://github.com/yur3i/cyberland (originally cyberland.club but it is no longer online)
 
 #Requirements
 
