@@ -10,6 +10,7 @@ def filter(cnt):
     file = open('filters', 'a+')
     file.write(cnt +'\n')
     file.close()
+    filter_update()
 
 def filter_update():
     global filters
