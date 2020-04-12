@@ -4,10 +4,27 @@ try:
 except:
     import json
 
+filters = []
+
+def filter(cnt):
+    file = open('filters', 'a+')
+    file.write(cnt +'\n')
+    file.close()
+
+def filter_update():
+    global filters
+    file = open('filters', 'r')
+    filters = [line.rstrip() for line in file]
+    file.close()
+
 def get(board, num, rsp=None, website='cyberland2.club/'):
     rs = r.get('https://' +website +board, params={'thread':rsp, 'num':num}).content
     rs = json.loads(rs)
+    filtered = 0
     for f in rs:
+        if(f['content'] in filters):
+            filtered = filtered + 1
+            continue;
         g = '+'
         for i in range(0, len(f['id'])):
             g = g + '-'
@@ -47,6 +64,7 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
         for i in range(0, len(f['content'])):
             g = g + '-'
         print(g + '+')
+    print('### ' +str(filtered) +' posts filtered ###')
 
 def post(board, cnt, rto=None, website='cyberland2.club'):
     if rto!=None:
@@ -54,3 +72,6 @@ def post(board, cnt, rto=None, website='cyberland2.club'):
     else:
         dat = {'content':cnt, 'replyTo':None}
     r.post('https://' +website +'/' +board +'/', data=dat)
+
+if __name__ == '__main__':
+    filter_update()
