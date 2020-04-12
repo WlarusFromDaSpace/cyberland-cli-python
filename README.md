@@ -16,8 +16,10 @@ post(board, message, number of the post you're replying to if any, website defau
 get(board, number of posts, thread if any, website default is cyberland2.club)
 
 The posts are returned in the following format:
+```
 +-----------+-------------+----------+---------+
 |Post number|Responding to|Bump count|Timestamp|
 +-----------+-------------+----------+---------+
 |                     Content                  |
 +----------------------------------------------+
+```
