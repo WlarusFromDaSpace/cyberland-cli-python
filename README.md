@@ -1,4 +1,4 @@
-A cli client for textboards based on this https://github.com/yur3i/cyberland (originally cyberland.club but it is no longer online)
+A cli client for textboards based on https://github.com/yur3i/cyberland (originally cyberland.club but it is no longer online)
 
 #Requirements
 
