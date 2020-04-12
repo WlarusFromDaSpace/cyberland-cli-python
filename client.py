@@ -4,11 +4,8 @@ try:
 except:
     import json
 
-def get(board, num, rsp=None, website='cyberland2.club'):
-    if rsp != None:
-        rs = r.get('https://' +website +'/' +board +'/?' +'thread=' +str(rsp) +'&num=' +str(num)).content
-    else:
-        rs = r.get('https://' +website +'/' +board +'/?' +'num=' +str(num)).content
+def get(board, num, rsp=None, website='cyberland2.club/'):
+    rs = r.get('https://' +website +board, params={'thread':rsp, 'num':num}).content
     rs = json.loads(rs)
     for f in rs:
         g = '+'
@@ -24,8 +21,14 @@ def get(board, num, rsp=None, website='cyberland2.club'):
         for i in range(0, len(z) + 2):
             g = g + '-'
         g = g + '+'
+        for i in range(0, len(f['bumpCount'])):
+            g = g + '-'
+        g = g + '+'
+        for i in range(0, len(f['time'])):
+            g = g +'-'
+        g = g + '+'
         print(g)
-        print('|' +f['id'] +'|' +'>>' +z +'|')
+        print('|' +f['id'] +'|' +'>>' +z +'|' +f['bumpCount'] +'|' +f['time'] +'|')
         if len(f['content']) >= 200:
             print(g)
             print(f['content'])
