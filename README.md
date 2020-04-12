@@ -11,6 +11,6 @@ simplejson
 
 #How to use
 
-post(board, message, number of the post you're replying to if any)
+post(board, message, number of the post you're replying to if any, website default is cyberland2.club)
 
-get(board, number of posts, thread if any)
+get(board, number of posts, thread if any, website default is cyberland2.club)

@@ -4,11 +4,11 @@ try:
 except:
     import json
 
-def get(board, num, rsp=None):
+def get(board, num, rsp=None, website='cyberland2.club'):
     if rsp != None:
-        rs = r.get('https://cyberland.club/' +board +'/?' +'thread=' +str(rsp) +'&num=' +str(num)).content
+        rs = r.get('https://' +website +'/' +board +'/?' +'thread=' +str(rsp) +'&num=' +str(num)).content
     else:
-        rs = r.get('https://cyberland.club/' +board +'/?' +'num=' +str(num)).content
+        rs = r.get('https://' +website +'/' +board +'/?' +'num=' +str(num)).content
     rs = json.loads(rs)
     for f in rs:
         g = '+'
@@ -45,9 +45,9 @@ def get(board, num, rsp=None):
             g = g + '-'
         print(g + '+')
 
-def post(board, cnt, rto=None):
+def post(board, cnt, rto=None, website='cyberland2.club'):
     if rto!=None:
         dat = {'content':cnt, 'replyTo':rto}
     else:
         dat = {'content':cnt, 'replyTo':None}
-    r.post('https://cyberland.club/' +board +'/', data=dat)
+    r.post('https://' +website +'/' +board +'/', data=dat)
