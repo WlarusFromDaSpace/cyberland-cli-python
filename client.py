@@ -28,6 +28,10 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
     rs = json.loads(rs)
     filtered = 0
     for f in rs:
+        if f['bumpCount'] == None:
+            f['bumpCount'] = '0'
+        if f['time'] == None:
+            f['time'] = '0'
         if(f['content'] in filters):
             filtered = filtered + 1
             continue;
@@ -73,11 +77,7 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
     print('### ' +str(filtered) +' posts filtered ###')
 
 def post(board, cnt, rto=None, website='cyberland2.club'):
-    if rto!=None:
-        dat = {'content':cnt, 'replyTo':rto}
-    else:
-        dat = {'content':cnt, 'replyTo':None}
-    r.post('https://' +website +'/' +board +'/', data=dat)
+    r.post('https://' +website +'/' +board +'/', data={'content':cnt, 'replyTo':rto})
 
 if __name__ == '__main__':
     filter_update()
