@@ -29,7 +29,7 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
         g = g + '+'
         print(g)
         print('|' +f['id'] +'|' +'>>' +z +'|' +f['bumpCount'] +'|' +f['time'] +'|')
-        if len(f['content']) >= 200:
+        if len(f['content']) >= 300:
             print(g)
             print(f['content'])
             continue;
