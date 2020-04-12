@@ -7,7 +7,7 @@ Python 3.x
 
 requests
 
-simplejson
+simplejson //A soft requirement but I prefer it due to it being faster
 
 #How to use
 
