@@ -1,6 +1,8 @@
 import requests as r;
-import simplejson as json
-
+try:
+    import simplejson as json
+except:
+    import json
 
 def get(board, num, rsp=None):
     if rsp != None:
