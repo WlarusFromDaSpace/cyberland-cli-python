@@ -90,7 +90,7 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
 
 def post(board, cnt, rto=None, website='cyberland2.club'):
     r.post('https://' +website +'/' +board +'/', data={'content':cnt, 'replyTo':rto})
-
+    get(board, 2)
 def ansipost(imgfile):
     try:
         img = run(['viu', imgfile], stdout=PIPE, universal_newlines=True)
@@ -100,6 +100,11 @@ def ansipost(imgfile):
         post('i', img.stdout)
     except FileNotFoundError:
         print('### Viu does not appear to be in your PATH ###')
+    get('i', 2)
+
+def neofetch(board='i', msg=''):
+    fetch = run('neofetch', stdout=PIPE, universal_newlines=True)
+    post(board, fetch.stdout +'\n' +msg)
 
 if __name__ == '__main__':
     filter_update()

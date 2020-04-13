@@ -10,6 +10,8 @@ simplejson //A soft requirement but I prefer it due to it being faster
 
 viu //A soft requirement, viu is used for ansiposting and without viu you can't ansipost
 
+neofetch //Soft requirement, it is used for posting your fethces
+
 #How to use
 
 start the client by opening the client.py in IDLE and running it or by using this command in the folder where the file is located:
@@ -40,4 +42,6 @@ Filtered posts are shown as follows
 
 filter_update() //updates the filter, runs automatically when the client is started or filter()is run.
 
-ansipost(path to file) //Converts an imagefile to ANSI and posts it to /i/. Smaller images, like 50x50, are preferred
+ansipost(path to file) //Converts an imagefile to ANSI and posts it to /i/. Smaller images, like 50x50, are preferred. Size limit is 350000 bytes.
+
+neofetch(board, message) //Allows you to post your neofetch to different boards
