@@ -44,7 +44,7 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
             f['bumpCount'] = '0'
         if f['time'] == None:
             f['time'] = '0'
-        if(f['content'] in filters):
+        if(f['content'] in filters and f['id'] != str(rsp)):
             filtered = filtered + 1
             continue;
         g = '+'
@@ -91,20 +91,19 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
 def post(board, cnt, rto=None, website='cyberland2.club'):
     r.post('https://' +website +'/' +board +'/', data={'content':cnt, 'replyTo':rto})
     get(board, 2)
-def ansipost(imgfile):
+def ansipost(imgfile, msg='', rsp=None):
     try:
         img = run(['viu', imgfile], stdout=PIPE, universal_newlines=True)
         if (len(img.stdout.encode('utf-8')) > 350000):
             print('### Image size exceeds the maximum byte size of 350000, it will not be posted ###')
             return;
-        post('i', img.stdout)
+        post('i', msg +'\n' +img.stdout, rsp)
     except FileNotFoundError:
         print('### Viu does not appear to be in your PATH ###')
-    get('i', 2)
 
 def neofetch(board='i', msg=''):
     fetch = run('neofetch', stdout=PIPE, universal_newlines=True)
-    post(board, fetch.stdout +'\n' +msg)
+    post(board, msg +'\n' +fetch.stdout)
 
 if __name__ == '__main__':
     filter_update()
