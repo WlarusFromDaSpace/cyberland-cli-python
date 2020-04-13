@@ -3,6 +3,7 @@ try:
     import simplejson as json
 except:
     import json
+from subprocess import run, PIPE
 
 filters = []
 
@@ -56,7 +57,7 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
         g = g + '+'
         print(g)
         print('|' +f['id'] +'|' +'>>' +z +'|' +f['bumpCount'] +'|' +f['time'] +'|')
-        if len(f['content']) >= 300:
+        if len(f['content']) >= 200:
             print(g)
             print(f['content'])
             continue;
@@ -79,5 +80,8 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
 def post(board, cnt, rto=None, website='cyberland2.club'):
     r.post('https://' +website +'/' +board +'/', data={'content':cnt, 'replyTo':rto})
 
+def ansipost(imgfile):
+    img = run(['viu', imgfile], stdout=PIPE, universal_newlines=True)
+    post('i', img.stdout)
 if __name__ == '__main__':
     filter_update()
