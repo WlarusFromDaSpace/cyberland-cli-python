@@ -95,7 +95,7 @@ def ansipost(imgfile):
     try:
         img = run(['viu', imgfile], stdout=PIPE, universal_newlines=True)
         if (len(img.stdout.encode('utf-8')) > 35000):
-            Print('### Image size exceeds the maximum byte size of 35000, it will not be posted ###')
+            print('### Image size exceeds the maximum byte size of 35000, it will not be posted ###')
             return;
         post('i', img.stdout)
     except FileNotFoundError:
