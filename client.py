@@ -8,7 +8,7 @@ from subprocess import run, PIPE
 filters = []
 
 def filter(cnt):
-    file = open('filters', 'a+')
+    file = open('.filters', 'a+')
     file.write(cnt +'\n')
     file.close()
     filter_update()
@@ -16,11 +16,11 @@ def filter(cnt):
 def filter_update():
     global filters
     try:
-        file = open('filters', 'r')
+        file = open('.filters', 'r')
     except FileNotFoundError:
-        file = open('filters', 'a+')
+        file = open('.filters', 'a+')
         file.close()
-        file = open('filters', 'r')
+        file = open('.filters', 'r')
     filters = [line.rstrip() for line in file]
     file.close()
 
