@@ -31,6 +31,10 @@ The posts are returned in the following format:
 ```
 
 filter(content to be filtered) //This command adds the content to a .filters file or creates it if it doesn't exist
+Filtered posts are shown as follows
+```
+### (number of posts) filtered ###
+```
 
 filter_update() //updates the filter, runs automatically when the client is started or filter()is run.
 
