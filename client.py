@@ -40,6 +40,8 @@ def get(board, num, rsp=None, website='cyberland2.club/'):
     rs = rs[::-1]
     filtered = 0
     for f in rs:
+        for i in f:
+            f[i] = str(f[i])
         if f['bumpCount'] == None:
             f['bumpCount'] = '0'
         if f['time'] == None:
