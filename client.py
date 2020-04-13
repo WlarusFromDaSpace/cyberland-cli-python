@@ -24,9 +24,20 @@ def filter_update():
     filters = [line.rstrip() for line in file]
     file.close()
 
+def show_filters():
+    global filters
+    try:
+        file = open('.filters', 'r')
+    except FileNotFoundError:
+        print('### No .filters file found, to create one please use filter() ###')
+        return;
+    print([line.rstrip() for line in file])
+    file.close()
+
 def get(board, num, rsp=None, website='cyberland2.club/'):
     rs = r.get('https://' +website +board, params={'thread':rsp, 'num':num}).content
     rs = json.loads(rs)
+    rs = rs[::-1]
     filtered = 0
     for f in rs:
         if f['bumpCount'] == None:
