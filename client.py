@@ -81,7 +81,10 @@ def post(board, cnt, rto=None, website='cyberland2.club'):
     r.post('https://' +website +'/' +board +'/', data={'content':cnt, 'replyTo':rto})
 
 def ansipost(imgfile):
-    img = run(['viu', imgfile], stdout=PIPE, universal_newlines=True)
-    post('i', img.stdout)
+    try:
+        img = run(['viu', imgfile], stdout=PIPE, universal_newlines=True)
+        post('i', img.stdout)
+    except FileNotFoundError:
+        print('### Viu does not appear to be in your PATH ###')
 if __name__ == '__main__':
     filter_update()
