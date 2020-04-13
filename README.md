@@ -1,4 +1,4 @@
-A cli client for textboards based on this https://github.com/yur3i/cyberland (originally cyberland.club but it is no longer online)
+A cli client for textboards based on https://github.com/yur3i/cyberland (originally cyberland.club but it is no longer online)
 
 #Requirements
 
@@ -30,4 +30,4 @@ The posts are returned in the following format:
 
 filter(content to be filtered) //This command adds the content to a .filters file or creates it if it doesn't exist
 
-filter_update() //updates the filter, runs automatically when the client is started and filter()is run.
+filter_update() //updates the filter, runs automatically when the client is started or filter()is run.
