@@ -71,6 +71,7 @@ def get(board, num, rsp=None, website='cyberland2.club'):
         g = g + '+'
         print(g)
         f['content'] = f['content'].replace('\n', ' ')
+        f['content'] = f['content'].replace('\r', '')
         while (len(f['content']) + 2 < len(g)):
             f['content'] = ' ' +f['content']
             if len(f['content']) + 2 < len(g):
@@ -85,6 +86,7 @@ def get(board, num, rsp=None, website='cyberland2.club'):
 def post(board, cnt, rto=None, website='cyberland2.club'):
     r.post('https://' +website +'/' +board +'/', data={'content':cnt, 'replyTo':rto})
     get(board, 2)
+
 def ansipost(imgfile, msg='', rsp=None):
     try:
         img = run(['viu', imgfile], stdout=PIPE, universal_newlines=True)
