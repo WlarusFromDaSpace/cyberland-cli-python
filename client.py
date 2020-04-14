@@ -47,10 +47,8 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
         g = g + '+'
         if f['replyTo'] != None and f['replyTo'] != '0':
             z = f['replyTo']
-            rlen = len(f['replyTo'])
         else:
             z = '0000'
-            rlen = 0
         for i in range(0, len(z) + 2):
             g = g + '-'
         g = g + '+'
@@ -66,15 +64,15 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
             print(g)
             print(f['content'])
             continue;
-        for i in range(0, len(f['content']) - len(f['id']) - rlen - 4):
-            g = g +'-'
-        g = g + '+'
-        print(g)
         f['content'] = f['content'].replace('\n', ' ')
         f['content'] = f['content'].replace('\r', '')
-        while (len(f['content']) + 2 < len(g)):
+        for i in range(0, len(f['content'])):
+            g = g + '-'
+        g = g + '+'
+        print(g)
+        while (len(f['content']) < len(g) - 2):
             f['content'] = ' ' +f['content']
-            if len(f['content']) + 2 < len(g):
+            if len(f['content']) < len(g) - 2:
                 f['content'] = f['content'] +' '
         print('|' +f['content'] +'|')
         g = '+'
