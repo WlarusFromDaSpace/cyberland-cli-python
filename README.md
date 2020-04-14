@@ -21,7 +21,7 @@ python3 -i client.py
 
 post(board, message, number of the post you're replying to if any, website default is cyberland2.club)
 
-get(board, number of posts, thread if any, website default is cyberland2.club)
+get(board, number of posts, offset, thread if any, website, default is cyberland2.club)
 
 The posts are returned in the following format:
 ```
