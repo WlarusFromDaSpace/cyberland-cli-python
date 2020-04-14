@@ -35,7 +35,9 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
             if f[i] != str:
                 f[i] = str(f[i])
         if website != 'landcyber.herokuapp.com' and f['bumpCount'] == None:
-            f['bumpCount'] = '0'
+            bmpC = '0'
+        elif website == 'landcyber.herokuapp.com':
+            bmpC = '#'
         if f['time'] == None:
             f['time'] = '0'
         if(f['content'] in filters and f['id'] != str(rsp)):
@@ -52,10 +54,6 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
         for i in range(0, len(z) + 2):
             g = g + '-'
         g = g + '+'
-        if website != 'landcyber.herokuapp.com':
-            bmpC = f['bumpCount']
-        else:
-            bmpC = '#'
         for i in range(0, len(bmpC)):
             g = g + '-'
         g = g + '+'
