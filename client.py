@@ -89,7 +89,7 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
 
 def post(board, cnt, rto=None, website='cyberland2.club'):
     r.post('https://' +website +'/' +board +'/', data={'content':cnt, 'replyTo':rto})
-    get(board, 2, website)
+    get(board, 2, website=website)
 
 def ansipost(imgfile, msg='', rsp=None, website='cyberland2.club'):
     try:
