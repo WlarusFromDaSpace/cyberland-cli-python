@@ -97,8 +97,8 @@ def post(board, cnt, rto=None, website='cyberland2.club'):
 def ansipost(imgfile, msg='', rsp=None, website='cyberland2.club'):
     try:
         img = run(['viu', imgfile], stdout=PIPE, universal_newlines=True)
-        if (len(img.stdout.encode('utf-8')) >10000):
-            print('### Image size exceeds the maximum byte size of 10000, it will not be posted ###')
+        if (len(img.stdout) >100000):
+            print('### Image size of ' +str(len(img.stdout)) +' exceeds the maximum byte size of 100000, it will not be posted ###')
             return;
         post('i', msg +'\n' +img.stdout, rsp, website)
     except FileNotFoundError:
