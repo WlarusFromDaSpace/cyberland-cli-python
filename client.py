@@ -38,6 +38,8 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
             bmpC = '0'
         elif website == 'landcyber.herokuapp.com':
             bmpC = '#'
+        else:
+            bmpC = f['bumpCount']
         if f['time'] == None:
             f['time'] = '0'
         if(f['content'] in filters and f['id'] != str(rsp)):
