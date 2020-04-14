@@ -29,6 +29,9 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
     rs = r.get('https://' +website +'/' +board, params={'thread':rsp, 'num':num, 'offset':ofs}).content
     rs = json.loads(rs)
     rs = rs[::-1]
+    if rs == []:
+        print('### No posts received ###')
+        return
     filtered = 0
     for f in rs:
         for i in f:
