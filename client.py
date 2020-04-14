@@ -34,7 +34,7 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
         for i in f:
             if f[i] != str:
                 f[i] = str(f[i])
-        if f['bumpCount'] == None:
+        if website != 'landcyber.herokuapp.com' and f['bumpCount'] == None:
             f['bumpCount'] = '0'
         if f['time'] == None:
             f['time'] = '0'
@@ -52,14 +52,18 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
         for i in range(0, len(z) + 2):
             g = g + '-'
         g = g + '+'
-        for i in range(0, len(f['bumpCount'])):
+        if website != 'landcyber.herokuapp.com':
+            bmpC = f['bumpCount']
+        else:
+            bmpC = '#'
+        for i in range(0, len(bmpC)):
             g = g + '-'
         g = g + '+'
         for i in range(0, len(f['time'])):
             g = g +'-'
         g = g + '+'
         print(g)
-        print('|' +f['id'] +'|' +'>>' +z +'|' +f['bumpCount'] +'|' +f['time'] +'|')
+        print('|' +f['id'] +'|' +'>>' +z +'|' +bmpC +'|' +f['time'] +'|')
         if len(f['content']) >= 200:
             print(g)
             print(f['content'])
@@ -79,25 +83,27 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
         for i in range(0, len(f['content'])):
             g = g + '-'
         print(g + '+')
+    if website == 'landcyber.herokuapp.com':
+        print('### landcyber does not return bumpCount and as such they are shown as "#" ###')
     print('### ' +str(filtered) +' posts filtered ###')
 
 def post(board, cnt, rto=None, website='cyberland2.club'):
     r.post('https://' +website +'/' +board +'/', data={'content':cnt, 'replyTo':rto})
-    get(board, 2)
+    get(board, 2, website)
 
-def ansipost(imgfile, msg='', rsp=None):
+def ansipost(imgfile, msg='', rsp=None, website='cyberland2.club'):
     try:
         img = run(['viu', imgfile], stdout=PIPE, universal_newlines=True)
         if (len(img.stdout.encode('utf-8')) > 350000):
             print('### Image size exceeds the maximum byte size of 350000, it will not be posted ###')
             return;
-        post('i', msg +'\n' +img.stdout, rsp)
+        post('i', msg +'\n' +img.stdout, rsp, website)
     except FileNotFoundError:
         print('### Viu does not appear to be in your PATH ###')
 
-def neofetch(board='i', msg=''):
+def neofetch(board='i', msg='', rto=None, website='cyberland2.club'):
     fetch = run('neofetch', stdout=PIPE, universal_newlines=True)
-    post(board, msg +'\n' +fetch.stdout)
+    post(board, msg +'\n' +fetch.stdout, rto, website)
 
 if __name__ == '__main__':
     filter_update()

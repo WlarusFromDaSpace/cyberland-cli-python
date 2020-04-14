@@ -44,6 +44,6 @@ filter_update() //updates the filter, runs automatically when the client is star
 
 To see filtered posts just write filters to the CLI
 
-ansipost(path to file) //Converts an imagefile to ANSI and posts it to /i/. Smaller images, like 50x50, are preferred. Size limit is 350000 bytes.
+ansipost(path to file, number you're replying to(default=None), website) //Converts an imagefile to ANSI and posts it to /i/. Smaller images, like 50x50, are preferred. Size limit is 350000 bytes.
 
-neofetch(board, message) //Allows you to post your neofetch to different boards
+neofetch(board, message, number you're replying to(default=None), website) //Allows you to post your neofetch to different boards
