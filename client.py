@@ -35,7 +35,7 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
     filtered = 0
     for f in rs:
         for i in f:
-            if f[i] != str:
+            if f[i] != str and f[i] != None:
                 f[i] = str(f[i])
         if website != 'landcyber.herokuapp.com' and f['bumpCount'] == None:
             bmpC = '0'
