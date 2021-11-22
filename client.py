@@ -25,7 +25,7 @@ def filter_update():
     file.close()
 
 
-def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
+def get(board, num, ofs=None, rsp=None, website='cyberland.bobignou.red'):
     rs = r.get('https://' +website +'/' +board, params={'thread':rsp, 'num':num, 'offset':ofs}).content
     rs = json.loads(rs)
     rs = rs[::-1]
@@ -37,12 +37,15 @@ def get(board, num, ofs=None, rsp=None, website='cyberland2.club'):
         for i in f:
             if f[i] != str and f[i] != None:
                 f[i] = str(f[i])
+        """
         if website != 'landcyber.herokuapp.com' and f['bumpCount'] == None:
             bmpC = '0'
         elif website == 'landcyber.herokuapp.com':
             bmpC = '#'
         else:
             bmpC = f['bumpCount']
+        """ #Disable bumcount for the moment
+        bmpC = '#'
         if f['time'] == None:
             f['time'] = '0'
         if(f['content'] in filters and f['id'] != str(rsp)):
